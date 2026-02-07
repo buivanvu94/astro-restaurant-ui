@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -16,9 +16,7 @@ export default defineConfig({
       applyBaseStyles: true,
     }),
   ],
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
   output: 'server',
   vite: {
     build: {
