@@ -38,7 +38,7 @@ npm install
 Create a `.env` file:
 
 ```env
-PUBLIC_API_URL=http://localhost:5000/api
+PUBLIC_API_URL=https://vuapiastronhahang.nguyenluan.vn/api/v1
 ```
 
 ### Development

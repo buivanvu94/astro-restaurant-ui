@@ -1,4 +1,4 @@
-﻿---
+---
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import { Image } from 'astro:assets';
 import type { Product, ProductPrice } from '@/lib/api/products';
@@ -16,7 +16,7 @@ interface HomeProductItem {
   imageUrl: string;
 }
 
-const apiBaseUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const apiBaseUrl = import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1';
 const uploadsBaseUrl = apiBaseUrl.replace(/\/api\/v\d+\/?$/, '');
 const fallbackImages = [seafoodHero.src, seafoodRoom.src, seafoodAbout.src];
 
@@ -40,7 +40,7 @@ const pickDefaultPrice = (prices: ProductPrice[] | undefined): number | null => 
 };
 
 const normalizeDesc = (description: string | null | undefined): string => {
-  if (!description) return 'Hương vị hải sản cao cấp theo phong cách hoàng gia.';
+  if (!description) return 'Huong v? h?i s?n cao c?p theo phong c�ch ho�ng gia.';
   return description.length > 95 ? `${description.slice(0, 95).trim()}...` : description;
 };
 
@@ -68,7 +68,7 @@ const fetchHomeProducts = async (): Promise<HomeProductItem[]> => {
         id: String(index + 1).padStart(2, '0'),
         name: product.name,
         desc: normalizeDesc(shortDescription),
-        price: priceValue !== null ? formatCurrencyVnd(priceValue) : 'Liên hệ',
+        price: priceValue !== null ? formatCurrencyVnd(priceValue) : 'Li�n h?',
         imageUrl
       };
     });
@@ -80,7 +80,7 @@ const fetchHomeProducts = async (): Promise<HomeProductItem[]> => {
 const menuItems = await fetchHomeProducts();
 ---
 
-<SiteLayout title="Aurelian Seafood" description="Nhà hàng hải sản cao cấp">
+<SiteLayout title="Aurelian Seafood" description="Nh� h�ng h?i s?n cao c?p">
   <section class="relative overflow-hidden">
     <div class="absolute -top-24 -left-24 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl"></div>
     <div class="absolute top-10 right-0 w-72 h-72 bg-teal-400/20 rounded-full blur-3xl"></div>
@@ -88,27 +88,27 @@ const menuItems = await fetchHomeProducts();
     <div class="max-w-6xl mx-auto px-6 pb-20 pt-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
       <div class="space-y-6">
         <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight fade-up delay-1 hero-title-gradient">
-          Tinh hoa hải sản, phong cách hoàng gia
+          Tinh hoa h?i s?n, phong c�ch ho�ng gia
         </h1>
         <p class="text-lg text-slate-200/80 fade-up delay-2">
-          Từ những khu nước trong lành, Aurelian chọn lọc hải sản tươi sống và chế biến theo phong cách fine dining.
+          T? nh?ng khu nu?c trong l�nh, Aurelian ch?n l?c h?i s?n tuoi s?ng v� ch? bi?n theo phong c�ch fine dining.
         </p>
         <div class="flex flex-wrap gap-4 fade-up delay-3">
-          <a class="btn-primary" href="/lien-he">Đặt bàn ngay</a>
-          <a class="btn-outline" href="/gioi-thieu">Không gian</a>
+          <a class="btn-primary" href="/lien-he">�?t b�n ngay</a>
+          <a class="btn-outline" href="/gioi-thieu">Kh�ng gian</a>
         </div>
         <div class="grid grid-cols-3 gap-4 pt-8">
           <div>
             <p class="text-2xl font-semibold">50+</p>
-            <p class="text-sm text-slate-300">Món signature</p>
+            <p class="text-sm text-slate-300">M�n signature</p>
           </div>
           <div>
             <p class="text-2xl font-semibold">12</p>
-            <p class="text-sm text-slate-300">Bộ sưu tập rượu</p>
+            <p class="text-sm text-slate-300">B? suu t?p ru?u</p>
           </div>
           <div>
             <p class="text-2xl font-semibold">4.9</p>
-            <p class="text-sm text-slate-300">Đánh giá</p>
+            <p class="text-sm text-slate-300">��nh gi�</p>
           </div>
         </div>
       </div>
@@ -140,16 +140,16 @@ const menuItems = await fetchHomeProducts();
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-3 gap-6">
           <div class="card-glass p-6 fade-up">
-            <h3 class="text-xl mb-2">Nguồn nguyên liệu</h3>
-            <p class="text-slate-300">Hải sản từ Phú Quốc, Nha Trang, quốc tế, tuyển chọn mỗi sáng.</p>
+            <h3 class="text-xl mb-2">Ngu?n nguy�n li?u</h3>
+            <p class="text-slate-300">H?i s?n t? Ph� Qu?c, Nha Trang, qu?c t?, tuy?n ch?n m?i s�ng.</p>
           </div>
           <div class="card-glass p-6 fade-up delay-1">
-            <h3 class="text-xl mb-2">Không gian</h3>
-            <p class="text-slate-300">Phòng ăn riêng, quầy bar ngọc trai, view hồ nước tự nhiên.</p>
+            <h3 class="text-xl mb-2">Kh�ng gian</h3>
+            <p class="text-slate-300">Ph�ng an ri�ng, qu?y bar ng?c trai, view h? nu?c t? nhi�n.</p>
           </div>
           <div class="card-glass p-6 fade-up delay-2">
-            <h3 class="text-xl mb-2">Trải nghiệm</h3>
-            <p class="text-slate-300">Service 1-1, pairing rượu vang chuẩn nhà hàng Michelin.</p>
+            <h3 class="text-xl mb-2">Tr?i nghi?m</h3>
+            <p class="text-slate-300">Service 1-1, pairing ru?u vang chu?n nh� h�ng Michelin.</p>
           </div>
       </div>
     </div>
@@ -160,10 +160,10 @@ const menuItems = await fetchHomeProducts();
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
         <div>
           <p class="text-sm text-amber-200/80 tracking-[0.25em] uppercase">Signature</p>
-          <h2 class="section-title">Thực đơn biểu tượng</h2>
-          <p class="section-subtitle">12 món tuyển chọn theo chuẩn fine dining, cân bằng giữa độ tươi, kỹ thuật và nghệ thuật trình bày.</p>
+          <h2 class="section-title">Th?c don bi?u tu?ng</h2>
+          <p class="section-subtitle">12 m�n tuy?n ch?n theo chu?n fine dining, c�n b?ng gi?a d? tuoi, k? thu?t v� ngh? thu?t tr�nh b�y.</p>
         </div>
-        <a class="btn-outline" href="/lien-he">Đặt tasting menu</a>
+        <a class="btn-outline" href="/lien-he">�?t tasting menu</a>
       </div>
       {menuItems.length > 0 ? (
         <div class="menu-grid">
@@ -191,7 +191,7 @@ const menuItems = await fetchHomeProducts();
         </div>
       ) : (
         <div class="card-glass p-8 text-center text-slate-200/90">
-          Chưa có sản phẩm xuất bản để hiển thị trên trang chủ.
+          Chua c� s?n ph?m xu?t b?n d? hi?n th? tr�n trang ch?.
         </div>
       )}
     </div>
@@ -213,16 +213,16 @@ const menuItems = await fetchHomeProducts();
           />
         </div>
         <div class="space-y-5">
-          <h2 class="section-title">Phong vị đại dương trong không gian sang trọng</h2>
+          <h2 class="section-title">Phong v? d?i duong trong kh�ng gian sang tr?ng</h2>
           <p class="section-subtitle">
-            Thưởng thức set menu 7-9 món với kỹ thuật chef chuẩn Âu, đảm bảo chuẩn sang trọng và thanh lịch.
+            Thu?ng th?c set menu 7-9 m�n v?i k? thu?t chef chu?n �u, d?m b?o chu?n sang tr?ng v� thanh l?ch.
           </p>
           <ul class="space-y-3 text-slate-300">
-            <li>Sommelier tư vấn rượu vang và cocktail</li>
-            <li>Phòng VIP riêng tư 6-20 khách</li>
-            <li>Live seafood bar và live cooking</li>
+            <li>Sommelier tu v?n ru?u vang v� cocktail</li>
+            <li>Ph�ng VIP ri�ng tu 6-20 kh�ch</li>
+            <li>Live seafood bar v� live cooking</li>
           </ul>
-          <a class="btn-primary inline-block" href="/lien-he">Đặt bàn VIP</a>
+          <a class="btn-primary inline-block" href="/lien-he">�?t b�n VIP</a>
         </div>
       </div>
   </section>
@@ -231,12 +231,12 @@ const menuItems = await fetchHomeProducts();
       <div class="max-w-6xl mx-auto px-6">
         <div class="card-glass p-10 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div>
-            <h2 class="text-3xl">Đặt bàn hôm nay</h2>
-            <p class="text-slate-300">Cam kết giữ chỗ trong 15 phút, có tổng đài hỗ trợ 24/7.</p>
+            <h2 class="text-3xl">�?t b�n h�m nay</h2>
+            <p class="text-slate-300">Cam k?t gi? ch? trong 15 ph�t, c� t?ng d�i h? tr? 24/7.</p>
           </div>
           <div class="flex gap-4">
-            <a class="btn-primary" href="/lien-he">Đặt bàn</a>
-            <a class="btn-outline" href="/gioi-thieu">Xem thêm</a>
+            <a class="btn-primary" href="/lien-he">�?t b�n</a>
+            <a class="btn-outline" href="/gioi-thieu">Xem th�m</a>
           </div>
         </div>
       </div>

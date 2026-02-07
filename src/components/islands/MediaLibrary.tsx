@@ -63,7 +63,7 @@ export default function MediaLibrary({ mode = 'library', onSelect, multiple = fa
     const rawPath = item.thumbnail_path || item.path || '';
     if (!rawPath) return '';
     if (rawPath.startsWith('http://') || rawPath.startsWith('https://')) return rawPath;
-    const apiBase = import.meta.env.PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+    const apiBase = import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1';
     const mediaBase = apiBase.replace(/\/api\/v\d+\/?$/, '');
     return `${mediaBase}${rawPath.startsWith('/') ? '' : '/'}${rawPath}`;
   };

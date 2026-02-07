@@ -1,8 +1,8 @@
-﻿import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axios';
+import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axios';
 
 // Create base axios instance
 const apiClient: AxiosInstance = axios.create({
-  baseURL: import.meta.env.PUBLIC_API_URL || 'http://localhost:5000/api/v1',
+  baseURL: import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -129,7 +129,7 @@ apiClient.interceptors.response.use(
     try {
       // Attempt to refresh the access token
       const response = await axios.post(
-        `${import.meta.env.PUBLIC_API_URL || 'http://localhost:5000/api/v1'}/auth/refresh`,
+        `${import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1'}/auth/refresh`,
         { refreshToken }
       );
 

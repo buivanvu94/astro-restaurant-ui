@@ -39,7 +39,7 @@ interface PostsPageResult {
   totalPages: number;
 }
 
-const apiBaseUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const apiBaseUrl = import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1';
 const uploadsBaseUrl = apiBaseUrl.replace(/\/api\/v\d+\/?$/, '');
 const fallbackImages = [seafoodHero.src, seafoodRoom.src, seafoodAbout.src];
 const pageSize = 9;

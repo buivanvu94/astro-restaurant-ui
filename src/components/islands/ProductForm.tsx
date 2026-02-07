@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { productsApi, productCategoriesApi, mediaApi } from '@/lib/api';
 import MediaPicker from './MediaPicker';
 import PriceEditor from './PriceEditor';
@@ -48,22 +48,22 @@ export default function ProductForm({ productId }: ProductFormProps) {
 
   const validateField = (name: string, value: any) => {
     if (name === 'name' && !String(value || '').trim()) {
-      return 'Tên sản phẩm là bắt buộc';
+      return 'T�n s?n ph?m l� b?t bu?c';
     }
 
     if (name === 'slug' && String(value || '').trim()) {
       const slugPattern = /^[a-z0-9-]+$/;
       if (!slugPattern.test(String(value).trim())) {
-        return 'Slug chỉ gồm chữ thường, số và dấu gạch ngang';
+        return 'Slug ch? g?m ch? thu?ng, s? v� d?u g?ch ngang';
       }
     }
 
     if (name === 'seo_title' && String(value || '').length > 60) {
-      return 'Meta title tối đa 60 ký tự';
+      return 'Meta title t?i da 60 k� t?';
     }
 
     if (name === 'seo_description' && String(value || '').length > 160) {
-      return 'Meta description tối đa 160 ký tự';
+      return 'Meta description t?i da 160 k� t?';
     }
 
     return '';
@@ -71,16 +71,16 @@ export default function ProductForm({ productId }: ProductFormProps) {
 
   const validatePrices = (items: any[]) => {
     if (!items || items.length === 0) {
-      return 'Cần ít nhất 1 đơn giá';
+      return 'C?n �t nh?t 1 don gi�';
     }
 
     if (!items.some((item) => item.is_default)) {
-      return 'Cần chọn 1 giá mặc định';
+      return 'C?n ch?n 1 gi� m?c d?nh';
     }
 
     const invalid = items.find((item) => !Number.isFinite(Number(item.price)) || Number(item.price) < 0);
     if (invalid) {
-      return 'Đơn giá phải lớn hơn hoặc bằng 0';
+      return '�on gi� ph?i l?n hon ho?c b?ng 0';
     }
 
     const invalidSale = items.find((item) => (
@@ -91,7 +91,7 @@ export default function ProductForm({ productId }: ProductFormProps) {
     ));
 
     if (invalidSale) {
-      return 'Giá giảm phải nhỏ hơn đơn giá và không âm';
+      return 'Gi� gi?m ph?i nh? hon don gi� v� kh�ng �m';
     }
 
     return '';
@@ -356,7 +356,7 @@ export default function ProductForm({ productId }: ProductFormProps) {
     }
   };
 
-  const apiBase = import.meta.env.PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+  const apiBase = import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1';
   const mediaBase = apiBase.replace(/\/api\/v\d+\/?$/, '');
 
   const resolveMediaSrc = (media: any): string => {
@@ -544,7 +544,7 @@ export default function ProductForm({ productId }: ProductFormProps) {
                       Change
                     </button>
                     <label className="text-amber-300 hover:text-amber-200 transition-colors cursor-pointer">
-                      {uploadingFeatured ? 'Uploading...' : 'Upload mới'}
+                      {uploadingFeatured ? 'Uploading...' : 'Upload m?i'}
                       <input
                         type="file"
                         accept="image/*"
@@ -570,10 +570,10 @@ export default function ProductForm({ productId }: ProductFormProps) {
                   onClick={() => setShowMediaPicker(true)}
                   className="px-4 py-3 text-base border border-amber-400/30 rounded-lg text-amber-100 hover:bg-amber-400/10 transition-colors cursor-pointer"
                 >
-                  Chọn từ thư viện
+                  Ch?n t? thu vi?n
                 </button>
                 <label className="px-4 py-3 text-base border border-amber-400/30 rounded-lg text-amber-100 hover:bg-amber-400/10 transition-colors cursor-pointer">
-                  {uploadingFeatured ? 'Uploading...' : 'Upload ảnh đại diện'}
+                  {uploadingFeatured ? 'Uploading...' : 'Upload ?nh d?i di?n'}
                   <input
                     type="file"
                     accept="image/*"
@@ -613,7 +613,7 @@ export default function ProductForm({ productId }: ProductFormProps) {
               </div>
             ) : null}
             {galleryImages.length > 0 && (
-              <p className="text-sm text-amber-200/70 mb-3">Đã chọn {galleryImages.length} ảnh gallery</p>
+              <p className="text-sm text-amber-200/70 mb-3">�� ch?n {galleryImages.length} ?nh gallery</p>
             )}
             <div className="flex flex-wrap gap-3">
               <button
@@ -621,7 +621,7 @@ export default function ProductForm({ productId }: ProductFormProps) {
                 onClick={() => setShowGalleryPicker(true)}
                 className="px-4 py-3 text-base border border-amber-400/30 rounded-lg text-amber-100 hover:bg-amber-400/10 transition-colors cursor-pointer"
               >
-                {galleryImages.length > 0 ? 'Chọn thêm từ thư viện' : 'Chọn gallery từ thư viện'}
+                {galleryImages.length > 0 ? 'Ch?n th�m t? thu vi?n' : 'Ch?n gallery t? thu vi?n'}
               </button>
               <label className="px-4 py-3 text-base border border-amber-400/30 rounded-lg text-amber-100 hover:bg-amber-400/10 transition-colors cursor-pointer">
                 {uploadingGallery ? 'Uploading...' : 'Upload gallery'}

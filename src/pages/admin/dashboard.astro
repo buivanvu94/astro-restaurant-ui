@@ -1,10 +1,10 @@
-﻿---
+---
 import DashboardLayout from '@/layouts/DashboardLayout.astro';
 
 // Disable prerendering for authenticated pages
 export const prerender = false;
 
-const apiBaseUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+const apiBaseUrl = import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1';
 const accessToken = Astro.cookies.get('access_token')?.value;
 
 const buildHeaders = () => {
@@ -58,7 +58,7 @@ const getStatusCount = (statuses: any[], target: string) => {
   <div class="space-y-6">
     <div>
       <h1 class="text-3xl font-bold text-gradient-gold animate-shine bg-[length:200%_auto]">Dashboard</h1>
-      <p class="mt-2 text-base text-amber-200/70">Tổng quan hệ thống quản lý nội dung</p>
+      <p class="mt-2 text-base text-amber-200/70">T?ng quan h? th?ng qu?n l� n?i dung</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -72,7 +72,7 @@ const getStatusCount = (statuses: any[], target: string) => {
           <span class="text-xs text-green-400 font-medium">{postStats.published} public</span>
         </div>
         <h3 class="text-2xl font-bold text-amber-100 mb-1">{postStats.total}</h3>
-        <p class="text-sm text-gray-400">Tổng bài viết</p>
+        <p class="text-sm text-gray-400">T?ng b�i vi?t</p>
       </div>
 
       <div class="glass-gold rounded-2xl p-6 border border-amber-400/20 hover:border-amber-400/40 transition-all duration-200 group">
@@ -85,7 +85,7 @@ const getStatusCount = (statuses: any[], target: string) => {
           <span class="text-xs text-green-400 font-medium">{productStats.published} public</span>
         </div>
         <h3 class="text-2xl font-bold text-amber-100 mb-1">{productStats.total}</h3>
-        <p class="text-sm text-gray-400">Sản phẩm</p>
+        <p class="text-sm text-gray-400">S?n ph?m</p>
       </div>
 
       <div class="glass-gold rounded-2xl p-6 border border-amber-400/20 hover:border-amber-400/40 transition-all duration-200 group">
@@ -95,10 +95,10 @@ const getStatusCount = (statuses: any[], target: string) => {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
           </div>
-          <span class="text-xs text-amber-400 font-medium">{getStatusCount(reservationStats.byStatus, 'pending')} chờ</span>
+          <span class="text-xs text-amber-400 font-medium">{getStatusCount(reservationStats.byStatus, 'pending')} ch?</span>
         </div>
         <h3 class="text-2xl font-bold text-amber-100 mb-1">{reservationStats.total}</h3>
-        <p class="text-sm text-gray-400">Đặt bàn</p>
+        <p class="text-sm text-gray-400">�?t b�n</p>
       </div>
 
       <div class="glass-gold rounded-2xl p-6 border border-amber-400/20 hover:border-amber-400/40 transition-all duration-200 group">
@@ -108,17 +108,17 @@ const getStatusCount = (statuses: any[], target: string) => {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-          <span class="text-xs text-red-400 font-medium">{contactStats.newContacts} mới</span>
+          <span class="text-xs text-red-400 font-medium">{contactStats.newContacts} m?i</span>
         </div>
         <h3 class="text-2xl font-bold text-amber-100 mb-1">{contactStats.total}</h3>
-        <p class="text-sm text-gray-400">Liên hệ</p>
+        <p class="text-sm text-gray-400">Li�n h?</p>
       </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div class="glass-gold rounded-2xl border border-amber-400/20 overflow-hidden">
         <div class="px-6 py-4 border-b border-amber-400/20">
-          <h2 class="text-xl font-semibold text-amber-100">Hoạt động gần đây</h2>
+          <h2 class="text-xl font-semibold text-amber-100">Ho?t d?ng g?n d�y</h2>
         </div>
         <div class="p-6">
           <div class="space-y-4">
@@ -131,8 +131,8 @@ const getStatusCount = (statuses: any[], target: string) => {
                 </div>
               </div>
               <div class="flex-1 min-w-0">
-                <p class="text-sm text-gray-300">Bài viết đã xuất bản: {postStats.published}</p>
-                <p class="text-xs text-gray-500 mt-1">Hệ thống đang có {postStats.total} bài viết</p>
+                <p class="text-sm text-gray-300">B�i vi?t d� xu?t b?n: {postStats.published}</p>
+                <p class="text-xs text-gray-500 mt-1">H? th?ng dang c� {postStats.total} b�i vi?t</p>
               </div>
             </div>
 
@@ -145,8 +145,8 @@ const getStatusCount = (statuses: any[], target: string) => {
                 </div>
               </div>
               <div class="flex-1 min-w-0">
-                <p class="text-sm text-gray-300">Đặt bàn sắp tới: {reservationStats.upcoming}</p>
-                <p class="text-xs text-gray-500 mt-1">Đơn chờ xác nhận: {getStatusCount(reservationStats.byStatus, 'pending')}</p>
+                <p class="text-sm text-gray-300">�?t b�n s?p t?i: {reservationStats.upcoming}</p>
+                <p class="text-xs text-gray-500 mt-1">�on ch? x�c nh?n: {getStatusCount(reservationStats.byStatus, 'pending')}</p>
               </div>
             </div>
 
@@ -159,8 +159,8 @@ const getStatusCount = (statuses: any[], target: string) => {
                 </div>
               </div>
               <div class="flex-1 min-w-0">
-                <p class="text-sm text-gray-300">Liên hệ mới: {contactStats.newContacts}</p>
-                <p class="text-xs text-gray-500 mt-1">Tổng liên hệ đã nhận: {contactStats.total}</p>
+                <p class="text-sm text-gray-300">Li�n h? m?i: {contactStats.newContacts}</p>
+                <p class="text-xs text-gray-500 mt-1">T?ng li�n h? d� nh?n: {contactStats.total}</p>
               </div>
             </div>
           </div>
@@ -169,7 +169,7 @@ const getStatusCount = (statuses: any[], target: string) => {
 
       <div class="glass-gold rounded-2xl border border-amber-400/20 overflow-hidden">
         <div class="px-6 py-4 border-b border-amber-400/20">
-          <h2 class="text-xl font-semibold text-amber-100">Thao tác nhanh</h2>
+          <h2 class="text-xl font-semibold text-amber-100">Thao t�c nhanh</h2>
         </div>
         <div class="p-6">
           <div class="grid grid-cols-2 gap-4">
@@ -180,7 +180,7 @@ const getStatusCount = (statuses: any[], target: string) => {
               <svg class="w-8 h-8 text-gray-400 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
               </svg>
-              <span class="mt-2 text-sm font-medium text-gray-300 group-hover:text-amber-400 transition-colors">Tạo bài viết</span>
+              <span class="mt-2 text-sm font-medium text-gray-300 group-hover:text-amber-400 transition-colors">T?o b�i vi?t</span>
             </a>
 
             <a
@@ -190,7 +190,7 @@ const getStatusCount = (statuses: any[], target: string) => {
               <svg class="w-8 h-8 text-gray-400 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
               </svg>
-              <span class="mt-2 text-sm font-medium text-gray-300 group-hover:text-amber-400 transition-colors">Thêm sản phẩm</span>
+              <span class="mt-2 text-sm font-medium text-gray-300 group-hover:text-amber-400 transition-colors">Th�m s?n ph?m</span>
             </a>
 
             <a
@@ -210,7 +210,7 @@ const getStatusCount = (statuses: any[], target: string) => {
               <svg class="w-8 h-8 text-gray-400 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
               </svg>
-              <span class="mt-2 text-sm font-medium text-gray-300 group-hover:text-amber-400 transition-colors">Quản lý danh mục</span>
+              <span class="mt-2 text-sm font-medium text-gray-300 group-hover:text-amber-400 transition-colors">Qu?n l� danh m?c</span>
             </a>
           </div>
         </div>
