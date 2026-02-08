@@ -149,7 +149,7 @@ export default function ProductTable() {
                         <div className="flex items-center gap-3">
                           {product.featuredImage && (
                             <img
-                              src={product.featuredImage.thumbnail_url || product.featuredImage.url}
+                              src={product.featuredImage.thumbnail_path || product.featuredImage.path}
                               alt=""
                               className="w-10 h-10 object-cover rounded-lg border border-amber-400/20"
                             />

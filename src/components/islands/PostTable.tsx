@@ -141,7 +141,7 @@ export default function PostTable() {
                         <div className="flex items-center gap-3">
                           {post.featuredImage && (
                             <img
-                              src={post.featuredImage.thumbnail_url || post.featuredImage.url}
+                              src={post.featuredImage.thumbnail_path || post.featuredImage.path}
                               alt=""
                               className="w-10 h-10 object-cover rounded-lg border border-amber-400/20"
                             />

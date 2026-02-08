@@ -34,7 +34,7 @@ export default function QuillEditorDemo() {
               const uploaded = await mediaApi.upload(file, 'demo');
               const apiBase = import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1';
               const mediaBase = apiBase.replace(/\/api\/v\d+\/?$/, '');
-              const imageUrl = uploaded.url || uploaded.path || '';
+              const imageUrl = uploaded.path || '';
               return imageUrl.startsWith('http') ? imageUrl : `${mediaBase}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`;
             } catch (error) {
               console.error('Failed to upload image:', error);

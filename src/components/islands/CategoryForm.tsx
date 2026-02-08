@@ -200,7 +200,7 @@ export default function CategoryForm({ categoryId }: CategoryFormProps) {
             {selectedImage ? (
               <div className="flex items-start gap-4">
                 <img
-                  src={selectedImage.thumbnail_url || selectedImage.url}
+                  src={selectedImage.thumbnail_path || selectedImage.path}
                   alt={selectedImage.alt_text}
                   className="w-32 h-32 object-cover rounded-lg border border-amber-400/20"
                 />
