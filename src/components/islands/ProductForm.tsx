@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { productsApi, productCategoriesApi, mediaApi } from '@/lib/api';
 import MediaPicker from './MediaPicker';
 import PriceEditor from './PriceEditor';
+import QuillEditor from './QuillEditor';
 
 interface ProductFormProps {
   productId?: number;
@@ -48,22 +49,22 @@ export default function ProductForm({ productId }: ProductFormProps) {
 
   const validateField = (name: string, value: any) => {
     if (name === 'name' && !String(value || '').trim()) {
-      return 'Tên s?n ph?m là b?t bu?c';
+      return 'Tï¿½n s?n ph?m lï¿½ b?t bu?c';
     }
 
     if (name === 'slug' && String(value || '').trim()) {
       const slugPattern = /^[a-z0-9-]+$/;
       if (!slugPattern.test(String(value).trim())) {
-        return 'Slug ch? g?m ch? thu?ng, s? và d?u g?ch ngang';
+        return 'Slug ch? g?m ch? thu?ng, s? vï¿½ d?u g?ch ngang';
       }
     }
 
     if (name === 'seo_title' && String(value || '').length > 60) {
-      return 'Meta title t?i da 60 ký t?';
+      return 'Meta title t?i da 60 kï¿½ t?';
     }
 
     if (name === 'seo_description' && String(value || '').length > 160) {
-      return 'Meta description t?i da 160 ký t?';
+      return 'Meta description t?i da 160 kï¿½ t?';
     }
 
     return '';
@@ -71,16 +72,16 @@ export default function ProductForm({ productId }: ProductFormProps) {
 
   const validatePrices = (items: any[]) => {
     if (!items || items.length === 0) {
-      return 'C?n ít nh?t 1 don giá';
+      return 'C?n ï¿½t nh?t 1 don giï¿½';
     }
 
     if (!items.some((item) => item.is_default)) {
-      return 'C?n ch?n 1 giá m?c d?nh';
+      return 'C?n ch?n 1 giï¿½ m?c d?nh';
     }
 
     const invalid = items.find((item) => !Number.isFinite(Number(item.price)) || Number(item.price) < 0);
     if (invalid) {
-      return 'Ðon giá ph?i l?n hon ho?c b?ng 0';
+      return 'ï¿½on giï¿½ ph?i l?n hon ho?c b?ng 0';
     }
 
     const invalidSale = items.find((item) => (
@@ -91,7 +92,7 @@ export default function ProductForm({ productId }: ProductFormProps) {
     ));
 
     if (invalidSale) {
-      return 'Giá gi?m ph?i nh? hon don giá và không âm';
+      return 'Giï¿½ gi?m ph?i nh? hon don giï¿½ vï¿½ khï¿½ng ï¿½m';
     }
 
     return '';
@@ -449,12 +450,23 @@ export default function ProductForm({ productId }: ProductFormProps) {
             <label className={labelClass}>
               Description
             </label>
-            <textarea
-              name="description"
+            <QuillEditor
               value={formData.description}
-              onChange={handleChange}
-              rows={5}
-              className={textareaClass}
+              onChange={(value) => setFormData(prev => ({ ...prev, description: value }))}
+              placeholder="Viáº¿t mÃ´ táº£ sáº£n pháº©m táº¡i Ä‘Ã¢y..."
+              height="400px"
+              onImageUpload={async (file) => {
+                try {
+                  const uploaded = await mediaApi.upload(file, 'products');
+                  const apiBase = import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1';
+                  const mediaBase = apiBase.replace(/\/api\/v\d+\/?$/, '');
+                  const imageUrl = uploaded.url || uploaded.path || '';
+                  return imageUrl.startsWith('http') ? imageUrl : `${mediaBase}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`;
+                } catch (error) {
+                  console.error('Failed to upload image:', error);
+                  throw error;
+                }
+              }}
             />
           </div>
 
@@ -613,7 +625,7 @@ export default function ProductForm({ productId }: ProductFormProps) {
               </div>
             ) : null}
             {galleryImages.length > 0 && (
-              <p className="text-sm text-amber-200/70 mb-3">Ðã ch?n {galleryImages.length} ?nh gallery</p>
+              <p className="text-sm text-amber-200/70 mb-3">ï¿½ï¿½ ch?n {galleryImages.length} ?nh gallery</p>
             )}
             <div className="flex flex-wrap gap-3">
               <button
@@ -621,7 +633,7 @@ export default function ProductForm({ productId }: ProductFormProps) {
                 onClick={() => setShowGalleryPicker(true)}
                 className="px-4 py-3 text-base border border-amber-400/30 rounded-lg text-amber-100 hover:bg-amber-400/10 transition-colors cursor-pointer"
               >
-                {galleryImages.length > 0 ? 'Ch?n thêm t? thu vi?n' : 'Ch?n gallery t? thu vi?n'}
+                {galleryImages.length > 0 ? 'Ch?n thï¿½m t? thu vi?n' : 'Ch?n gallery t? thu vi?n'}
               </button>
               <label className="px-4 py-3 text-base border border-amber-400/30 rounded-lg text-amber-100 hover:bg-amber-400/10 transition-colors cursor-pointer">
                 {uploadingGallery ? 'Uploading...' : 'Upload gallery'}

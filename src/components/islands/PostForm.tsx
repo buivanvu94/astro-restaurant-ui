@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect } from 'react';
-import { postsApi, categoriesApi } from '@/lib/api';
+import { postsApi, categoriesApi, mediaApi } from '@/lib/api';
 import MediaPicker from './MediaPicker';
+import QuillEditor from './QuillEditor';
 
 interface PostFormProps {
   postId?: number;
@@ -190,18 +191,24 @@ export default function PostForm({ postId }: PostFormProps) {
             <label className={labelClass}>
               Content <span className="text-rose-400">*</span>
             </label>
-            <textarea
-              name="content"
+            <QuillEditor
               value={formData.content}
-              onChange={handleChange}
-              rows={15}
-              required
-              className={`${textareaClass} font-mono text-base`}
-              placeholder="Write your post content here..."
+              onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
+              placeholder="Viết nội dung bài viết tại đây..."
+              height="500px"
+              onImageUpload={async (file) => {
+                try {
+                  const uploaded = await mediaApi.upload(file, 'posts');
+                  const apiBase = import.meta.env.PUBLIC_API_URL || 'https://vuapiastronhahang.nguyenluan.vn/api/v1';
+                  const mediaBase = apiBase.replace(/\/api\/v\d+\/?$/, '');
+                  const imageUrl = uploaded.url || uploaded.path || '';
+                  return imageUrl.startsWith('http') ? imageUrl : `${mediaBase}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`;
+                } catch (error) {
+                  console.error('Failed to upload image:', error);
+                  throw error;
+                }
+              }}
             />
-            <p className={subtleTextClass}>
-              Rich text editor can be integrated later (TinyMCE, Tiptap, etc.)
-            </p>
           </div>
         </div>
 
