@@ -54,7 +54,7 @@ const { title = 'Aurelian Seafood', description = 'Nhà hàng hải sản cao c�
       </div>
     </header>
     <div class="mobile-drawer-backdrop" data-mobile-backdrop hidden></div>
-    <aside id="mobile-nav-canvas" class="mobile-drawer-panel" data-mobile-panel aria-hidden="true">
+    <aside id="mobile-nav-canvas" class="mobile-drawer-panel" data-mobile-panel aria-hidden="true" inert>
       <div class="flex items-center justify-end mb-6">
         <button type="button" class="mobile-close-btn" aria-label="Đóng menu" data-mobile-menu-close>×</button>
       </div>
@@ -118,6 +118,7 @@ const { title = 'Aurelian Seafood', description = 'Nhà hàng hải sản cao c�
         const openMenu = () => {
           document.body.classList.add('mobile-nav-open');
           panel.setAttribute('aria-hidden', 'false');
+          panel.removeAttribute('inert');
           openButton.setAttribute('aria-expanded', 'true');
           backdrop.hidden = false;
         };
@@ -125,6 +126,7 @@ const { title = 'Aurelian Seafood', description = 'Nhà hàng hải sản cao c�
         const closeMenu = () => {
           document.body.classList.remove('mobile-nav-open');
           panel.setAttribute('aria-hidden', 'true');
+          panel.setAttribute('inert', '');
           openButton.setAttribute('aria-expanded', 'false');
           backdrop.hidden = true;
         };
