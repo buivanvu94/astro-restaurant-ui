@@ -103,11 +103,11 @@ const pageTitle = post ? `${post.title} - Blog Aurelian Seafood` : 'Bài viết 
 const pageDescription = post?.excerpt || 'Bài viết không tồn tại hoặc đã bị ẩn.';
 ---
 
-<SiteLayout title={pageTitle} description={pageDescription}>
+<SiteLayout title={pageTitle} description={pageDescription} ampUrl={post ? `/blog/${post.slug}/amp` : undefined}>
   <section class="relative overflow-hidden">
-    <div class="absolute -top-24 -left-24 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl"></div>
-    <div class="absolute top-8 right-0 w-72 h-72 bg-teal-400/20 rounded-full blur-3xl"></div>
-    <div class="max-w-6xl mx-auto px-6 pt-16 pb-10">
+    <div class="pointer-events-none absolute -top-24 -left-24 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl"></div>
+    <div class="pointer-events-none absolute top-8 right-0 w-72 h-72 bg-teal-400/20 rounded-full blur-3xl"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-10">
       <a href="/blog" class="blog-back-link">Quay lại Blog</a>
     </div>
   </section>
