@@ -18,7 +18,7 @@ export default function Header() {
 
   const userMenuItems = [
     {
-      label: 'Hồ sơ',
+      label: 'Profile',
       onClick: () => (window.location.href = '/admin/users/profile'),
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -27,7 +27,7 @@ export default function Header() {
       ),
     },
     {
-      label: 'Cài đặt',
+      label: 'Settings',
       onClick: () => (window.location.href = '/admin/settings'),
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@ export default function Header() {
     },
     { label: '', onClick: () => {}, divider: true },
     {
-      label: 'Đăng xuất',
+      label: 'Logout',
       onClick: handleLogout,
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,3 +112,4 @@ export default function Header() {
     </header>
   );
 }
+

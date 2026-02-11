@@ -150,7 +150,7 @@ export default function PostTable() {
                             <div className="text-sm font-medium text-amber-100">
                               {post.title}
                               {post.is_featured && (
-                                <span className="ml-2 text-xs text-amber-400">â˜… Featured</span>
+                                <span className="ml-2 text-xs text-amber-400">Featured</span>
                               )}
                             </div>
                             <div className="text-xs text-gray-500">{post.slug}</div>

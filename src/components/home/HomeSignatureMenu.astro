@@ -1,4 +1,4 @@
----
+﻿---
 import type { Product, ProductPrice } from '@/lib/api/products';
 import seafoodHero from '@/assets/images/seafood-hero.jpg';
 import seafoodRoom from '@/assets/images/seafood-room.jpg';
@@ -76,31 +76,35 @@ const menuItems = await getOrSetCache('home:signature-menu:v1', CACHE_TTL, fetch
   <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
     <div>
       <p class="text-sm text-amber-200/80 tracking-[0.25em] uppercase">Signature</p>
-      <h2 class="section-title">Thực đơn biểu tượng</h2>
-      <p class="section-subtitle">12 món tuyển chọn theo chuẩn fine dining, cân bằng giữa độ tươi, kỹ thuật và nghệ thuật trình bày.</p>
+      <h2 class="section-title">Thực đơn</h2>
+      <p class="section-subtitle">Các món được ưa chuộng nhất, trình bày theo dạng thực đơn để xem nhanh và dễ chọn món.</p>
     </div>
-    <a class="btn-outline" href="/lien-he">Đặt tasting menu</a>
+    <a class="btn-outline btn-compact" href="/menu">Xem toàn bộ thực đơn</a>
   </div>
+
   {menuItems.length > 0 ? (
-    <div class="menu-grid">
+    <div class="menu-catalog-grid">
       {menuItems.map((item) => (
-        <article class="card-glass menu-card">
-          <img
-            src={item.imageUrl}
-            alt={item.name}
-            class="w-full h-[178px] object-cover"
-            width="356"
-            height="178"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="p-5">
-            <div class="flex items-center justify-between gap-3 mb-2">
-              <span class="text-sm text-amber-200/80">{item.id}</span>
-              <span class="price-pill">{item.price}</span>
+        <article class="card-glass menu-catalog-card">
+          <div class="menu-catalog-media-wrap">
+            <img
+              src={item.imageUrl}
+              alt={item.name}
+              class="menu-catalog-media"
+              width="180"
+              height="135"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="menu-catalog-content">
+            <div class="menu-item-top">
+              <p class="menu-item-name">
+                <span class="text-amber-200/80 mr-2 text-sm">{item.id}</span>{item.name}
+              </p>
+              <span class="menu-item-price">{item.price}</span>
             </div>
-            <h3 class="text-xl">{item.name}</h3>
-            <p class="text-slate-300 mt-2">{item.desc}</p>
+            <p class="menu-item-desc">{item.desc}</p>
           </div>
         </article>
       ))}

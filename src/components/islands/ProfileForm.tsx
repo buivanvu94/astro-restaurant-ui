@@ -35,7 +35,7 @@ export default function ProfileForm() {
     } catch (error: any) {
       setMessage({
         type: 'error',
-        text: error?.response?.data?.message || 'Không thể tải thông tin tài khoản.',
+        text: error?.response?.data?.message || 'Unable to load your profile.',
       });
     } finally {
       setLoading(false);
@@ -54,17 +54,17 @@ export default function ProfileForm() {
     setMessage(null);
 
     if (!formData.full_name.trim()) {
-      setMessage({ type: 'error', text: 'Họ tên không được để trống.' });
+      setMessage({ type: 'error', text: 'Full name is required.' });
       return;
     }
 
     if (formData.password && formData.password.length < 6) {
-      setMessage({ type: 'error', text: 'Mật khẩu mới phải có ít nhất 6 ký tự.' });
+      setMessage({ type: 'error', text: 'New password must be at least 6 characters.' });
       return;
     }
 
     if (formData.password && formData.password !== formData.confirmPassword) {
-      setMessage({ type: 'error', text: 'Xác nhận mật khẩu không khớp.' });
+      setMessage({ type: 'error', text: 'Password confirmation does not match.' });
       return;
     }
 
@@ -82,11 +82,11 @@ export default function ProfileForm() {
       setUser(updated);
       setProfile(updated as ProfileState);
       setFormData((prev) => ({ ...prev, password: '', confirmPassword: '' }));
-      setMessage({ type: 'success', text: 'Cập nhật hồ sơ thành công.' });
+      setMessage({ type: 'success', text: 'Profile updated successfully.' });
     } catch (error: any) {
       setMessage({
         type: 'error',
-        text: error?.response?.data?.message || 'Không thể cập nhật hồ sơ.',
+        text: error?.response?.data?.message || 'Unable to update your profile.',
       });
     } finally {
       setSaving(false);
@@ -116,18 +116,18 @@ export default function ProfileForm() {
       )}
 
       <section className="glass-gold rounded-2xl border border-amber-400/20 p-6 space-y-5">
-        <h2 className="text-xl font-semibold text-amber-100">Thông tin cá nhân</h2>
+        <h2 className="text-xl font-semibold text-amber-100">Personal Information</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm text-amber-200/80 mb-2">Họ tên</label>
+            <label className="block text-sm text-amber-200/80 mb-2">Full Name</label>
             <input
               type="text"
               name="full_name"
               value={formData.full_name}
               onChange={handleChange}
               className="w-full rounded-xl border border-amber-400/20 bg-white/5 px-4 py-3 text-amber-50 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400/30 focus:border-amber-400"
-              placeholder="Nhập họ tên"
+              placeholder="Enter your full name"
             />
           </div>
 
@@ -144,14 +144,14 @@ export default function ProfileForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm text-amber-200/80 mb-2">Vai trò</label>
+            <label className="block text-sm text-amber-200/80 mb-2">Role</label>
             <div className="rounded-xl border border-amber-400/10 bg-black/20 px-4 py-3 text-amber-100/80 capitalize">
               {profile?.role || 'author'}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm text-amber-200/80 mb-2">Trạng thái</label>
+            <label className="block text-sm text-amber-200/80 mb-2">Status</label>
             <div className="rounded-xl border border-amber-400/10 bg-black/20 px-4 py-3 text-amber-100/80 capitalize">
               {profile?.status || 'active'}
             </div>
@@ -167,31 +167,31 @@ export default function ProfileForm() {
       </section>
 
       <section className="glass-gold rounded-2xl border border-amber-400/20 p-6 space-y-5">
-        <h2 className="text-xl font-semibold text-amber-100">Đổi mật khẩu</h2>
-        <p className="text-sm text-amber-200/60">Để trống nếu bạn không muốn thay đổi mật khẩu.</p>
+        <h2 className="text-xl font-semibold text-amber-100">Change Password</h2>
+        <p className="text-sm text-amber-200/60">Leave these fields empty if you do not want to change your password.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm text-amber-200/80 mb-2">Mật khẩu mới</label>
+            <label className="block text-sm text-amber-200/80 mb-2">New Password</label>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               className="w-full rounded-xl border border-amber-400/20 bg-white/5 px-4 py-3 text-amber-50 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400/30 focus:border-amber-400"
-              placeholder="Tối thiểu 6 ký tự"
+              placeholder="At least 6 characters"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-amber-200/80 mb-2">Xác nhận mật khẩu mới</label>
+            <label className="block text-sm text-amber-200/80 mb-2">Confirm New Password</label>
             <input
               type="password"
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
               className="w-full rounded-xl border border-amber-400/20 bg-white/5 px-4 py-3 text-amber-50 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400/30 focus:border-amber-400"
-              placeholder="Nhập lại mật khẩu mới"
+              placeholder="Re-enter the new password"
             />
           </div>
         </div>
@@ -203,7 +203,7 @@ export default function ProfileForm() {
           disabled={saving}
           className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400 text-gray-900 font-semibold hover:from-amber-500 hover:via-yellow-600 hover:to-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
         >
-          {saving ? 'Đang lưu...' : 'Lưu thay đổi'}
+          {saving ? 'Saving...' : 'Save Changes'}
         </button>
       </div>
     </form>

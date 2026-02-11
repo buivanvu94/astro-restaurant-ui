@@ -21,7 +21,7 @@ const menuItems: MenuItem[] = [
     ),
   },
   {
-    label: 'Bài viết',
+    label: 'Posts',
     href: '/admin/posts',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -30,7 +30,7 @@ const menuItems: MenuItem[] = [
     ),
   },
   {
-    label: 'Sản phẩm',
+    label: 'Products',
     href: '/admin/products',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@ const menuItems: MenuItem[] = [
     ),
   },
   {
-    label: 'Danh mục bài viết',
+    label: 'Post Categories',
     href: '/admin/categories',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,7 +48,7 @@ const menuItems: MenuItem[] = [
     ),
   },
   {
-    label: 'Danh mục sản phẩm',
+    label: 'Product Categories',
     href: '/admin/product-categories',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@ const menuItems: MenuItem[] = [
     ),
   },
   {
-    label: 'Đặt bàn',
+    label: 'Reservations',
     href: '/admin/reservations',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ const menuItems: MenuItem[] = [
     ),
   },
   {
-    label: 'Liên hệ',
+    label: 'Contacts',
     href: '/admin/contacts',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@ const menuItems: MenuItem[] = [
     roles: ['admin', 'editor'],
   },
   {
-    label: 'Người dùng',
+    label: 'Users',
     href: '/admin/users',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@ const menuItems: MenuItem[] = [
     roles: ['admin'],
   },
   {
-    label: 'Cài đặt',
+    label: 'Settings',
     href: '/admin/settings',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -233,3 +233,4 @@ export default function Sidebar() {
     </>
   );
 }
+

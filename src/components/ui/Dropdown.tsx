@@ -60,7 +60,7 @@ export default function Dropdown({ trigger, items, align = 'left', className = '
 
       {isOpen && (
         <div
-          className={`absolute ${alignClass} mt-2 w-56 glass-gold rounded-xl border border-amber-400/20 shadow-xl shadow-amber-500/10 z-50`}
+          className={`absolute ${alignClass} mt-2 w-56 rounded-xl border border-amber-400/25 bg-zinc-950/95 backdrop-blur-md shadow-xl shadow-black/40 z-50`}
         >
           <div className="py-1">
             {items.map((item, index) => (

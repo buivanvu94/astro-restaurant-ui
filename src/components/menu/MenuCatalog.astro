@@ -175,16 +175,16 @@ const groupedMenu = Array.from(groupedMenuMap.values());
                       class="menu-catalog-media"
                       loading="lazy"
                       decoding="async"
-                      width="720"
-                      height="420"
+                      width="180"
+                      height="135"
                     />
                   </div>
-                  <div class="p-5 md:p-6">
-                    <div class="flex items-center justify-between gap-3 mb-3">
+                  <div class="menu-catalog-content">
+                    <div class="menu-item-top">
                       <p class="menu-item-name">{item.name}</p>
                       <span class="menu-item-price">{item.priceText}</span>
                     </div>
-                    <p class="text-slate-300">{item.desc}</p>
+                    <p class="menu-item-desc">{item.desc}</p>
                   </div>
                 </article>
               ))}
